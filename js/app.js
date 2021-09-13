@@ -1,6 +1,8 @@
 const loadProducts = () => {
   // const url = `https://fakestoreapi.com/products`;
   
+
+  // load data 
   fetch('products.json')
     .then((response) => response.json())
     .then((data) => showProducts(data));
@@ -16,7 +18,7 @@ const showProducts = (products) => {
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
       <div>
-    <img class="product-image" src=${image}></img>
+      <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
@@ -62,15 +64,15 @@ const setInnerText = (id, value) => {
 const updateTaxAndCharge = () => {
   const priceConverted = getInputValue("price");
   if (priceConverted > 200) {
-    setInnerText("delivery-charge", 30);
+    setInnerText("delivery-charge", (30).toFixed(2));
     setInnerText("total-tax", (priceConverted * 0.2).toFixed(2));
   }
   if (priceConverted > 400) {
-    setInnerText("delivery-charge", 50);
+    setInnerText("delivery-charge", (50).toFixed(2));
     setInnerText("total-tax", (priceConverted * 0.3).toFixed(2));
   }
   if (priceConverted > 500) {
-    setInnerText("delivery-charge", 60);
+    setInnerText("delivery-charge", (60).toFixed(2));
     setInnerText("total-tax", (priceConverted * 0.4).toFixed(2));
   }
 };
@@ -82,4 +84,3 @@ const updateTotal = () => {
     getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal.toFixed(2);
 };
-
